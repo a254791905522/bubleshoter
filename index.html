@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endless Falling Action Fun! – Dodge, Dive & Fall Forever</title>
+    <title>Bubble Pop Blast – Buble Shooter | Shoot, Match & Pop Bubbles</title>
     <style>
         * {
             margin: 0;
@@ -13,109 +13,111 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: linear-gradient(165deg, #0a0e1a 0%, #111827 40%, #0f172a 100%);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, #e0f7fa 0%, #f3e5f5 40%, #fff3e0 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 24px;
             position: relative;
             overflow: hidden;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 20% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 70%, rgba(249, 115, 22, 0.12) 0%, transparent 50%),
-                        radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: 0;
+        @keyframes float-bubble {
+            0% { transform: translateY(100vh) scale(0.3); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
 
-        body::after {
-            content: '⬇ 🔥 ⚡ 💨 🌀 ✨';
-            position: absolute;
-            top: 8%;
-            left: 3%;
-            font-size: 42px;
-            opacity: 0.10;
-            pointer-events: none;
-            z-index: 0;
-            letter-spacing: 30px;
-            transform: rotate(-10deg);
-        }
-
-        .sparkle-bg {
-            position: absolute;
+        .bubble-bg {
+            position: fixed;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
         }
 
-        .sparkle-bg::before {
-            content: '▼ ▽ ▾ ▼ ▽';
+        .bubble-bg span {
             position: absolute;
-            bottom: 12%;
-            right: 5%;
-            font-size: 36px;
-            opacity: 0.08;
-            letter-spacing: 25px;
-            transform: rotate(12deg);
-            color: #06b6d4;
+            bottom: -60px;
+            border-radius: 50%;
+            animation: float-bubble linear infinite;
+            opacity: 0;
         }
 
-        @keyframes falling-line {
-            0% { transform: translateY(-100%); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-
-        .fall-lines {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .fall-lines::before,
-        .fall-lines::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 80px;
-            background: linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.3), transparent);
-            animation: falling-line 3s linear infinite;
-        }
-
-        .fall-lines::before {
-            left: 15%;
+        .bubble-bg span:nth-child(1) {
+            width: 40px; height: 40px;
+            left: 8%;
+            background: radial-gradient(circle at 30% 30%, #ff6b9d, #c44dff);
+            animation-duration: 8s;
             animation-delay: 0s;
         }
-
-        .fall-lines::after {
+        .bubble-bg span:nth-child(2) {
+            width: 28px; height: 28px;
+            left: 22%;
+            background: radial-gradient(circle at 30% 30%, #4dd0e1, #00838f);
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+        .bubble-bg span:nth-child(3) {
+            width: 50px; height: 50px;
+            left: 40%;
+            background: radial-gradient(circle at 30% 30%, #ffca28, #ff8f00);
+            animation-duration: 7s;
+            animation-delay: 1s;
+        }
+        .bubble-bg span:nth-child(4) {
+            width: 34px; height: 34px;
+            left: 58%;
+            background: radial-gradient(circle at 30% 30%, #69f0ae, #00c853);
+            animation-duration: 9s;
+            animation-delay: 3s;
+        }
+        .bubble-bg span:nth-child(5) {
+            width: 44px; height: 44px;
             left: 75%;
+            background: radial-gradient(circle at 30% 30%, #7c4dff, #651fff);
+            animation-duration: 11s;
+            animation-delay: 0.5s;
+        }
+        .bubble-bg span:nth-child(6) {
+            width: 24px; height: 24px;
+            left: 90%;
+            background: radial-gradient(circle at 30% 30%, #ff5252, #d50000);
+            animation-duration: 8.5s;
+            animation-delay: 4s;
+        }
+        .bubble-bg span:nth-child(7) {
+            width: 36px; height: 36px;
+            left: 50%;
+            background: radial-gradient(circle at 30% 30%, #40c4ff, #0091ea);
+            animation-duration: 12s;
             animation-delay: 1.5s;
+        }
+        .bubble-bg span:nth-child(8) {
+            width: 30px; height: 30px;
+            left: 5%;
+            background: radial-gradient(circle at 30% 30%, #ff80ab, #f50057);
+            animation-duration: 9.5s;
+            animation-delay: 5s;
         }
 
         .container {
-            background: linear-gradient(165deg, rgba(17, 24, 39, 0.95) 0%, rgba(15, 23, 42, 0.98) 50%, rgba(10, 14, 26, 0.95) 100%);
-            border-radius: 28px;
-            border: 2px solid rgba(6, 182, 212, 0.3);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
-                        0 8px 30px rgba(6, 182, 212, 0.08),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            max-width: 660px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 60px rgba(124, 77, 255, 0.12),
+                        0 8px 30px rgba(0, 0, 0, 0.06);
+            max-width: 680px;
             width: 100%;
-            padding: 48px;
+            padding: 52px 48px;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -124,79 +126,106 @@
 
         .container:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6),
-                        0 10px 35px rgba(6, 182, 212, 0.15);
+            box-shadow: 0 28px 70px rgba(124, 77, 255, 0.18),
+                        0 12px 40px rgba(0, 0, 0, 0.08);
         }
 
         .game-icon {
-            width: 120px;
-            height: 120px;
+            width: 128px;
+            height: 128px;
             margin: 0 auto 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 58px;
-            background: linear-gradient(145deg, #06b6d4 0%, #8b5cf6 40%, #f97316 80%, #06b6d4 100%);
-            border-radius: 28px;
-            box-shadow: 0 12px 32px rgba(6, 182, 212, 0.35),
-                        inset 0 2px 0 rgba(255, 255, 255, 0.2),
-                        inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-            border: 3px solid rgba(255, 255, 255, 0.15);
-            transform: rotateY(-6deg) rotateX(4deg);
+            font-size: 62px;
+            background: linear-gradient(135deg, #7c4dff 0%, #ff4081 40%, #ffca28 70%, #4dd0e1 100%);
+            border-radius: 32px;
+            box-shadow: 0 14px 36px rgba(124, 77, 255, 0.35),
+                        0 6px 16px rgba(255, 64, 129, 0.2),
+                        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.5);
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
         }
 
         .game-icon:hover {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.08);
+            transform: scale(1.1) rotate(3deg);
         }
 
         h1 {
-            color: #f1f5f9;
-            font-size: 2.1em;
-            margin-bottom: 10px;
+            color: #2d2d3f;
+            font-size: 2.2em;
+            margin-bottom: 8px;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         h1 .highlight {
-            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #f97316 100%);
+            background: linear-gradient(135deg, #7c4dff 0%, #ff4081 50%, #ffca28 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .subtitle {
-            color: #06b6d4;
-            font-size: 1.25em;
-            margin-bottom: 28px;
+            color: #7c4dff;
+            font-size: 1.2em;
+            margin-bottom: 24px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+        }
+
+        .info-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0 28px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, rgba(124, 77, 255, 0.08) 0%, rgba(255, 64, 129, 0.06) 100%);
+            border: 1.5px solid rgba(124, 77, 255, 0.2);
+            border-radius: 24px;
+            padding: 7px 16px;
+            font-size: 0.88em;
+            color: #7c4dff;
+            font-weight: 600;
         }
 
         .description {
-            color: #94a3b8;
-            line-height: 1.85;
-            font-size: 1.08em;
-            margin-bottom: 28px;
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.06em;
+            margin-bottom: 30px;
             text-align: left;
         }
 
         .description strong {
-            color: #e2e8f0;
+            color: #2d2d3f;
             font-weight: 700;
         }
 
         .features {
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
         .features h3 {
-            color: #f1f5f9;
+            color: #2d2d3f;
             margin-bottom: 18px;
             font-size: 1.35em;
             font-weight: 700;
+        }
+
+        .features h3 span {
+            background: linear-gradient(135deg, #7c4dff, #ff4081);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .features ul {
@@ -205,69 +234,50 @@
         }
 
         .features li {
-            color: #94a3b8;
-            padding: 10px 0;
-            padding-left: 36px;
+            color: #555;
+            padding: 11px 0;
+            padding-left: 38px;
             position: relative;
-            font-size: 1.05em;
-            line-height: 1.6;
+            font-size: 1.04em;
+            line-height: 1.65;
+        }
+
+        .features li strong {
+            color: #2d2d3f;
         }
 
         .features li::before {
-            content: "⬇";
+            content: "🫧";
             position: absolute;
             left: 0;
-            font-size: 1.1em;
+            font-size: 1.15em;
         }
 
-        .features li:nth-child(2)::before { content: "⚡"; }
-        .features li:nth-child(3)::before { content: "🔥"; }
-        .features li:nth-child(4)::before { content: "🎯"; }
-        .features li:nth-child(5)::before { content: "🌀"; }
+        .features li:nth-child(2)::before { content: "🎯"; }
+        .features li:nth-child(3)::before { content: "🌈"; }
+        .features li:nth-child(4)::before { content: "💥"; }
+        .features li:nth-child(5)::before { content: "🧩"; }
         .features li:nth-child(6)::before { content: "📱"; }
-
-        .info-badges {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 24px 0 8px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(139, 92, 246, 0.10) 100%);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 0.85em;
-            color: #06b6d4;
-            font-weight: 600;
-        }
 
         .app-store-button {
             display: inline-block;
-            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #f97316 100%);
+            background: linear-gradient(135deg, #7c4dff 0%, #ff4081 50%, #ffca28 100%);
             color: #fff;
-            padding: 16px 38px;
-            border-radius: 16px;
+            padding: 16px 40px;
+            border-radius: 20px;
             text-decoration: none;
             font-size: 1.15em;
             font-weight: 700;
             transition: all 0.3s ease;
-            margin-top: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.35);
+            margin-top: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 28px rgba(124, 77, 255, 0.35);
             letter-spacing: 0.5px;
         }
 
         .app-store-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.45);
-            background: linear-gradient(135deg, #f97316 0%, #8b5cf6 50%, #06b6d4 100%);
-            color: #fff;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 36px rgba(255, 64, 129, 0.4);
         }
 
         .app-store-button:active {
@@ -275,75 +285,73 @@
         }
 
         .footer {
-            margin-top: 30px;
+            margin-top: 32px;
             padding-top: 22px;
-            border-top: 2px solid rgba(6, 182, 212, 0.20);
-            font-size: 0.95em;
-            color: #64748b;
+            border-top: 2px solid rgba(124, 77, 255, 0.12);
+            font-size: 0.93em;
+            color: #999;
         }
 
         .footer a {
-            color: #06b6d4;
+            color: #7c4dff;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
         }
 
         .footer a:hover {
-            color: #f97316;
+            color: #ff4081;
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 1.7em;
-            }
-            .subtitle {
-                font-size: 1.1em;
-            }
-            .container {
-                padding: 28px 20px;
-            }
+            h1 { font-size: 1.7em; }
+            .subtitle { font-size: 1.05em; }
+            .container { padding: 32px 22px; border-radius: 24px; }
+            .game-icon { width: 100px; height: 100px; font-size: 48px; border-radius: 26px; }
         }
     </style>
 </head>
 
 <body>
-    <div class="sparkle-bg"></div>
-    <div class="fall-lines"></div>
+    <div class="bubble-bg">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
     <div class="container">
-        <div class="game-icon">🪂</div>
-        <h1>Endless Falling <span class="highlight">Action Fun!</span></h1>
-        <p class="subtitle">Dodge, Dive & Fall Forever!</p>
+        <div class="game-icon">🫧</div>
+        <h1>Bubble Pop <span class="highlight">Blast!</span></h1>
+        <p class="subtitle">Shoot, Match & Pop Bubbles</p>
 
         <div class="info-badges">
             <span class="badge">🆓 Free</span>
-            <span class="badge">🎮 Action</span>
-            <span class="badge">📱 iOS</span>
-            <span class="badge">⚡ Ages 4+</span>
+            <span class="badge">🧩 Puzzle</span>
+            <span class="badge">📱 iPhone & iPad</span>
+            <span class="badge">🎈 Ages 4+</span>
         </div>
 
         <div class="description">
-            <p><strong>Get ready for a high-speed free-fall adventure!</strong> Endless Falling Action Fun! drops you into an endless vertical world filled with obstacles, boosts, and heart-pounding action. Tilt, tap, or swipe your way through tight spaces, collect power-ups, and survive as long as you can while falling faster and faster! How far can you fall?</p>
+            <p><strong>Pop colorful bubbles, aim carefully and blast your way through endless fun!</strong> Bubble Pop Blast – Buble Shooter is a fun and addictive bubble shooting puzzle game where your goal is simple: aim, shoot and pop bubbles! Match three or more bubbles of the same color to clear them from the board and rack up amazing combos. With vibrant colors, satisfying pops, and increasingly tricky levels, every shot counts!</p>
         </div>
 
         <div class="features">
-            <h3>Why You'll Love It</h3>
+            <h3>Why You'll <span>Love It</span></h3>
             <ul>
-                <li><strong>Endless Free-Fall Action:</strong> Dive into an infinite vertical world where the deeper you fall, the harder it gets — can you beat your high score?</li>
-                <li><strong>Lightning-Fast Reflexes:</strong> Tilt, tap, or swipe to dodge obstacles and navigate through tight gaps at breakneck speed</li>
-                <li><strong>Power-Ups & Boosts:</strong> Collect awesome power-ups that give you shields, speed boosts, and special abilities to survive longer</li>
-                <li><strong>Precision Controls:</strong> Responsive and intuitive controls designed for quick reactions — easy to learn, hard to master</li>
-                <li><strong>Heart-Pounding Challenge:</strong> The speed ramps up the further you fall — stay focused and push your limits every run</li>
-                <li><strong>Play Anywhere:</strong> Available on iPhone, iPad, Mac (Apple Silicon), and Apple Vision — take the thrill wherever you go</li>
+                <li><strong>Classic Bubble Shooting Fun:</strong> Aim and launch colorful bubbles to match three or more of the same color — watch them burst in a spectacular chain reaction!</li>
+                <li><strong>Precision Aiming System:</strong> Line up your perfect shot with intuitive controls that make every launch feel satisfying and accurate</li>
+                <li><strong>Vibrant & Colorful World:</strong> Enjoy dazzling bubble designs and eye-catching visual effects that make every pop a delight</li>
+                <li><strong>Explosive Combos:</strong> Create chain reactions and massive combos to clear entire sections of the board and earn bonus points</li>
+                <li><strong>Brain-Teasing Puzzles:</strong> Strategize your shots wisely — plan ahead to clear tough formations and unlock new challenges</li>
+                <li><strong>Play Anywhere:</strong> Available on iPhone and iPad — enjoy bubble-popping fun on the go, anytime, anywhere</li>
             </ul>
         </div>
 
-        <a href="https://apps.apple.com/us/app/endless-falling-action-fun/id6756492101?uo=4" class="app-store-button" target="_blank" rel="noopener noreferrer">
-             Download on App Store
+        <a href="https://apps.apple.com/us/app/bubble-pop-blast-buble-shooter/id6760043529?uo=4" class="app-store-button" target="_blank" rel="noopener noreferrer">
+            Download on App Store
         </a>
 
         <div class="footer">
-            <p><a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp; © Endless Falling Action Fun!</p>
+            <p><a href="/privacy.html">Privacy Policy</a> &nbsp;·&nbsp; © Bubble Pop Blast</p>
         </div>
     </div>
 </body>

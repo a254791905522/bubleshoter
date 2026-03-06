@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Endless Falling Action Fun!</title>
+    <title>Privacy Policy – Bubble Pop Blast Buble Shooter</title>
     <style>
         * {
             margin: 0;
@@ -13,221 +13,338 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
             line-height: 1.8;
-            color: #94a3b8;
-            background: linear-gradient(165deg, #0a0e1a 0%, #111827 40%, #0f172a 100%);
-            padding: 20px;
+            color: #444;
+            background: linear-gradient(180deg, #e0f7fa 0%, #f3e5f5 40%, #fff3e0 100%);
+            padding: 24px;
             position: relative;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
+        @keyframes float-bubble {
+            0% { transform: translateY(100vh) scale(0.3); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .bubble-bg {
+            position: fixed;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at 20% 30%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(249, 115, 22, 0.10) 0%, transparent 50%);
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
+        }
+
+        .bubble-bg span {
+            position: absolute;
+            bottom: -60px;
+            border-radius: 50%;
+            animation: float-bubble linear infinite;
+            opacity: 0;
+        }
+
+        .bubble-bg span:nth-child(1) {
+            width: 32px; height: 32px; left: 6%;
+            background: radial-gradient(circle at 30% 30%, #ff6b9d, #c44dff);
+            animation-duration: 9s; animation-delay: 0s;
+        }
+        .bubble-bg span:nth-child(2) {
+            width: 22px; height: 22px; left: 30%;
+            background: radial-gradient(circle at 30% 30%, #4dd0e1, #00838f);
+            animation-duration: 11s; animation-delay: 3s;
+        }
+        .bubble-bg span:nth-child(3) {
+            width: 38px; height: 38px; left: 55%;
+            background: radial-gradient(circle at 30% 30%, #ffca28, #ff8f00);
+            animation-duration: 8s; animation-delay: 1.5s;
+        }
+        .bubble-bg span:nth-child(4) {
+            width: 26px; height: 26px; left: 78%;
+            background: radial-gradient(circle at 30% 30%, #69f0ae, #00c853);
+            animation-duration: 10s; animation-delay: 4s;
+        }
+        .bubble-bg span:nth-child(5) {
+            width: 42px; height: 42px; left: 92%;
+            background: radial-gradient(circle at 30% 30%, #7c4dff, #651fff);
+            animation-duration: 12s; animation-delay: 2s;
+        }
+        .bubble-bg span:nth-child(6) {
+            width: 20px; height: 20px; left: 15%;
+            background: radial-gradient(circle at 30% 30%, #ff5252, #d50000);
+            animation-duration: 9.5s; animation-delay: 5.5s;
         }
 
         .container {
-            max-width: 920px;
+            max-width: 860px;
             margin: 0 auto;
-            background: linear-gradient(165deg, rgba(17, 24, 39, 0.95) 0%, rgba(15, 23, 42, 0.98) 50%, rgba(10, 14, 26, 0.95) 100%);
-            padding: 50px;
-            border-radius: 28px;
-            border: 2px solid rgba(6, 182, 212, 0.3);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
-                0 8px 30px rgba(6, 182, 212, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 52px 50px;
+            border-radius: 32px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 60px rgba(124, 77, 255, 0.1),
+                        0 8px 30px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 1;
         }
 
-        h1 {
+        .header-area {
             text-align: center;
-            color: #f1f5f9;
-            font-size: 2.3em;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
+            padding-bottom: 28px;
+            border-bottom: 2px solid rgba(124, 77, 255, 0.1);
+        }
+
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h1 {
+            color: #2d2d3f;
+            font-size: 2.2em;
+            margin-bottom: 8px;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         h1 .highlight {
-            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #f97316 100%);
+            background: linear-gradient(135deg, #7c4dff 0%, #ff4081 50%, #ffca28 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .subtitle {
-            text-align: center;
-            color: #06b6d4;
-            margin-bottom: 18px;
-            font-size: 1.2em;
+        .app-name {
+            color: #7c4dff;
+            font-size: 1.1em;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
 
         .last-updated {
-            text-align: center;
-            color: #64748b;
-            font-size: 0.95em;
-            margin-bottom: 38px;
-            padding-bottom: 22px;
-            border-bottom: 2px solid rgba(6, 182, 212, 0.20);
+            color: #999;
+            font-size: 0.92em;
         }
 
-        h2 {
-            color: #e2e8f0;
-            margin-top: 40px;
-            margin-bottom: 18px;
-            font-size: 1.45em;
-            font-weight: 700;
-            border-bottom: 2px solid rgba(6, 182, 212, 0.25);
-            padding-bottom: 10px;
+        .section {
+            margin-bottom: 32px;
         }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2d2d3f;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(124, 77, 255, 0.12);
+        }
+
+        .section-title .icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .section:nth-child(1) .section-title .icon { background: linear-gradient(135deg, #e8eaf6, #c5cae9); }
+        .section:nth-child(2) .section-title .icon { background: linear-gradient(135deg, #e0f2f1, #b2dfdb); }
+        .section:nth-child(3) .section-title .icon { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+        .section:nth-child(4) .section-title .icon { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+        .section:nth-child(5) .section-title .icon { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+        .section:nth-child(6) .section-title .icon { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+        .section:nth-child(7) .section-title .icon { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+        .section:nth-child(8) .section-title .icon { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
 
         p {
-            margin: 16px 0;
-            color: #94a3b8;
-            font-size: 1.04em;
+            margin: 12px 0;
+            color: #555;
+            font-size: 1.02em;
         }
 
         ul {
-            margin: 16px 0;
-            padding-left: 32px;
+            margin: 14px 0;
+            padding-left: 0;
+            list-style: none;
         }
 
         li {
-            margin: 10px 0;
-            color: #94a3b8;
-            font-size: 1.04em;
+            margin: 8px 0;
+            color: #555;
+            font-size: 1.02em;
             line-height: 1.7;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        li::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7c4dff, #ff4081);
+            opacity: 0.7;
         }
 
         a {
-            color: #06b6d4;
+            color: #7c4dff;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
         }
 
         a:hover {
-            color: #f97316;
+            color: #ff4081;
         }
 
-        .contact-info {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.10) 0%, rgba(139, 92, 246, 0.08) 100%);
-            padding: 24px;
-            border-radius: 16px;
-            margin-top: 22px;
-            border: 2px solid rgba(6, 182, 212, 0.25);
+        strong {
+            color: #2d2d3f;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(124, 77, 255, 0.06) 0%, rgba(255, 64, 129, 0.04) 100%);
+            padding: 22px 26px;
+            border-radius: 18px;
+            border-left: 4px solid #7c4dff;
+            margin: 18px 0;
+        }
+
+        .highlight-box p {
+            margin: 4px 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(124, 77, 255, 0.07) 0%, rgba(77, 208, 225, 0.05) 100%);
+            padding: 24px 28px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(124, 77, 255, 0.15);
+            margin-top: 16px;
+        }
+
+        .contact-card p {
+            margin: 6px 0;
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 32px;
+            margin-top: 36px;
             color: #fff;
-            font-weight: 600;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #f97316 100%);
-            border-radius: 14px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            font-weight: 700;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #7c4dff 0%, #ff4081 50%, #ffca28 100%);
+            border-radius: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.30);
-            letter-spacing: 0.5px;
+            box-shadow: 0 8px 24px rgba(124, 77, 255, 0.3);
+            letter-spacing: 0.4px;
             text-decoration: none;
         }
 
         .back-link:hover {
-            background: linear-gradient(135deg, #f97316 0%, #8b5cf6 50%, #06b6d4 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(255, 64, 129, 0.35);
             color: #fff;
         }
 
-        strong {
-            color: #e2e8f0;
-            font-weight: 700;
-        }
-
-        .no-data-notice {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
-            padding: 20px 24px;
-            border-radius: 14px;
-            border-left: 4px solid #06b6d4;
-            margin: 20px 0;
-        }
-
         @media (max-width: 768px) {
-            .container {
-                padding: 32px 22px;
-            }
-
-            h1 {
-                font-size: 1.9em;
-            }
-
-            h2 {
-                font-size: 1.3em;
-            }
+            .container { padding: 34px 24px; border-radius: 24px; }
+            h1 { font-size: 1.8em; }
+            .section-title { font-size: 1.15em; }
         }
     </style>
 </head>
 
 <body>
+    <div class="bubble-bg">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+    </div>
+
     <div class="container">
-        <h1>Privacy <span class="highlight">Policy</span></h1>
-        <p class="subtitle">Endless Falling Action Fun! — Dodge, Dive & Fall Forever</p>
-        <p class="last-updated">Last Updated: February 2026</p>
-
-        <h2>1. Introduction</h2>
-        <p>Welcome to Endless Falling Action Fun! ("we," "our," or "us"). We are committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our endless falling action game application.</p>
-
-        <div class="no-data-notice">
-            <p><strong>Data Not Collected:</strong> The developer does not collect any data from this app. We do not collect personally identifiable information, device information, or usage data from Endless Falling Action Fun!</p>
+        <div class="header-area">
+            <span class="header-icon">🫧</span>
+            <h1>Privacy <span class="highlight">Policy</span></h1>
+            <p class="app-name">Bubble Pop Blast – Buble Shooter</p>
+            <p class="last-updated">Effective Date: March 2026</p>
         </div>
 
-        <h2>2. Information We Collect</h2>
-        <p>Endless Falling Action Fun! is designed with your privacy in mind. <strong>We do not collect any personal data from this app.</strong> We do not collect:</p>
-        <ul>
-            <li>Your name, email address, phone number, or other contact information</li>
-            <li>Device identifiers or usage analytics</li>
-            <li>Location data</li>
-            <li>Gameplay data (e.g., high scores, power-ups collected, distance fallen) for tracking or advertising</li>
-        </ul>
-        <p>Any progress or preferences (e.g., high scores, unlocked items, game settings) may be stored locally on your device only. We do not transmit such data to our servers.</p>
-
-        <h2>3. How We Use Your Information</h2>
-        <p>Because we do not collect personal information from Endless Falling Action Fun!, we do not use your information for analytics, advertising, or any other purpose. Your use of the app is private by design.</p>
-
-        <h2>4. Third-Party Services</h2>
-        <p>Endless Falling Action Fun! may link to third-party websites (for example, our privacy policy page or developer website). We are not responsible for the privacy practices of those third parties. We encourage you to review their privacy policies when you leave our app or this site.</p>
-
-        <h2>5. Children's Privacy</h2>
-        <p>Endless Falling Action Fun! is rated 4+ and is suitable for all ages, including children. We do not collect any personal information from anyone, including children under 13. No parental consent is required for data collection because we do not collect data. Our app provides a safe and exciting action gaming experience for players of all ages.</p>
-
-        <h2>6. Your Rights and Choices</h2>
-        <p>Because we do not collect your data, there is no personal data to access, correct, or delete. If you have questions about this policy or our practices, you may contact us as described below.</p>
-
-        <h2>7. Policy Updates</h2>
-        <p>We may update this Privacy Policy from time to time. We will post the updated policy on this page and update the "Last Updated" date. We encourage you to review this policy periodically.</p>
-
-        <h2>8. Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy or Endless Falling Action Fun!, please contact us:</p>
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:elizabethronald56@gmail.com">elizabethronald56@gmail.com</a></p>
+        <div class="section">
+            <h2 class="section-title"><span class="icon">📋</span> Overview</h2>
+            <p>This Privacy Policy describes how Bubble Pop Blast – Buble Shooter ("the App", "we", "us", or "our") handles user information. We built this bubble shooting puzzle game with a privacy-first approach. We believe your personal data belongs to you, and we have designed our App to respect that principle completely.</p>
         </div>
-        <p>We will respond to your inquiry as soon as practicable.</p>
 
-        <h2>9. Consent</h2>
-        <p>By downloading, installing, and using Endless Falling Action Fun!, you agree to this Privacy Policy. If you do not agree, please do not use our app.</p>
+        <div class="section">
+            <h2 class="section-title"><span class="icon">🔒</span> Data Collection Practices</h2>
+            <div class="highlight-box">
+                <p><strong>We do not collect any personal data.</strong> Bubble Pop Blast is a fully offline puzzle game. No account creation is required, and no personal information is gathered, stored, or transmitted at any time.</p>
+            </div>
+            <p>Specifically, we do not collect:</p>
+            <ul>
+                <li>Names, email addresses, phone numbers, or mailing addresses</li>
+                <li>Device identifiers, IP addresses, or hardware specifications</li>
+                <li>Geolocation or GPS data</li>
+                <li>Browsing history, search queries, or interaction patterns</li>
+                <li>In-game statistics such as scores, levels completed, or play sessions</li>
+            </ul>
+        </div>
 
-        <a href="/index.html" class="back-link">← Back to Home</a>
+        <div class="section">
+            <h2 class="section-title"><span class="icon">💾</span> Local Storage</h2>
+            <p>The App may save your game progress, preferences, and settings (such as sound volume or current level) directly on your device. This data is stored locally and is never uploaded to any external server. You can delete this data at any time by uninstalling the App from your device.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="icon">🔗</span> Third-Party Integrations</h2>
+            <p>Bubble Pop Blast does not integrate any third-party analytics tools, advertising SDKs, social media plugins, or tracking frameworks. The App operates independently without connecting to external services. If the App contains links to external websites, please note that those sites have their own privacy policies over which we have no control.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="icon">👶</span> Children's Privacy</h2>
+            <p>Our App is rated 4+ and is safe for users of all ages. Since we do not collect any data whatsoever, we fully comply with the Children's Online Privacy Protection Act (COPPA), the General Data Protection Regulation (GDPR) provisions for minors, and other applicable child protection regulations worldwide. Parents and guardians can feel confident allowing their children to enjoy Bubble Pop Blast.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="icon">🛡️</span> Your Rights</h2>
+            <p>Since no personal data is collected, processed, or stored by the App, there is no personal data for us to provide access to, correct, transfer, or delete. You are always in complete control of any locally stored game data on your device. Should privacy laws in your jurisdiction grant you additional rights, we are happy to assist — simply reach out using the contact details below.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="icon">🔄</span> Policy Changes</h2>
+            <p>We reserve the right to modify this Privacy Policy at any time. Any changes will be reflected on this page with an updated effective date. We recommend checking this page periodically to stay informed about how we protect your privacy. Continued use of the App after changes are posted constitutes your acceptance of the revised policy.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><span class="icon">✉️</span> Contact</h2>
+            <p>If you have any questions, concerns, or feedback regarding this Privacy Policy or the App, please do not hesitate to reach out to us:</p>
+            <div class="contact-card">
+                <p><strong>Developer:</strong> Sadiba Zaien</p>
+                <p><strong>Email:</strong> <a href="mailto:elizabethronald56@gmail.com">elizabethronald56@gmail.com</a></p>
+            </div>
+            <p>We strive to respond to all inquiries within a reasonable timeframe.</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="/index.html" class="back-link">← Back to Home</a>
+        </div>
     </div>
 </body>
 
